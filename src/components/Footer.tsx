@@ -1,4 +1,3 @@
-import React from 'react';
 import { Heart, ArrowUp, Github, Linkedin } from 'lucide-react';
 import Container from './Container';
 import { PROFILE } from '@/data/links';

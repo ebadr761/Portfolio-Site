@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Container from './Container';
 import AnimatedElement from './AnimatedElement';

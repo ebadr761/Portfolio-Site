@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, FileText } from 'lucide-react';
 import Container from './Container';
 import { buttonColors } from '@/lib/theme';

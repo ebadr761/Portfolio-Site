@@ -1,10 +1,8 @@
-import React from 'react';
 import { GraduationCap, Briefcase, Code2, Award } from 'lucide-react';
 import Container from './Container';
 import AnimatedElement from './AnimatedElement';
 import { SKILLS, CERTIFICATIONS } from '@/data/skills';
 import { EDUCATION, EXPERIENCE } from '@/data/education';
-import { PROFILE } from '@/data/links';
 
 export default function About() {
   return (

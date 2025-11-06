@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
 import { ExternalLink, Github, Star } from 'lucide-react';
 import Container from './Container';
 import AnimatedElement from './AnimatedElement';
 import { PROJECTS } from '@/data/projects';
 
 export default function Projects() {
-  const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
 
   return (
     <section id="work" className="relative py-32 px-6 border-t border-border bg-gradient-to-b from-surface/30 to-background">
@@ -36,8 +34,6 @@ export default function Projects() {
             <AnimatedElement key={project.slug} delay={idx + 1}>
               <div
                 className="group relative cursor-pointer rounded-2xl border border-border/50 glass overflow-hidden transition-all duration-500 hover:border-accentBlue/50 hover:shadow-soft-lg hover:scale-[1.02]"
-                onMouseEnter={() => setHoveredSlug(project.slug)}
-                onMouseLeave={() => setHoveredSlug(null)}
               >
                 {/* Gradient Accent Bar */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accentBlue via-accentPurple to-accentOrange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>

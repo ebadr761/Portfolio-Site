@@ -1,4 +1,3 @@
-import React from 'react';
 import { Mail, Phone, Linkedin, Github, MessageCircle, ArrowUpRight } from 'lucide-react';
 import Container from './Container';
 import AnimatedElement from './AnimatedElement';
