@@ -49,7 +49,13 @@ export default function Projects() {
                         <h3 className="text-3xl md:text-4xl font-display font-bold text-text group-hover:text-gradient-blue transition-all duration-300">
                           {project.title}
                         </h3>
-                        <span className="px-3 py-1 rounded-full text-xs font-medium bg-accentGreen/20 text-accentGreen border border-accentGreen/30">
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                          project.status === 'Complete'
+                            ? 'bg-accentGreen/20 text-accentGreen border border-accentGreen/30'
+                            : project.status === 'In Progress'
+                            ? 'bg-accentOrange/20 text-accentOrange border border-accentOrange/30'
+                            : 'bg-surface/50 text-subtext border border-border/30'
+                        }`}>
                           {project.status}
                         </span>
                       </div>

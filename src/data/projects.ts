@@ -18,8 +18,8 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     slug: "ai-chatbot-weather",
-    title: "AI Developer Intern @ Quest - Multi-Agent Chatbot Systems",
-    blurb: "Architected production AI chatbots processing 2,500+ daily queries using LangChain/LangGraph orchestration and n8n automation.",
+    title: "Multi-Agent Chatbot Systems",
+    blurb: "Architected production AI chatbots at my time as an intern @ Quest processing 2,500+ daily queries using LangChain/LangGraph orchestration and n8n automation.",
     tags: ["Python", "Flask", "LangChain", "LangGraph", "n8n", "AWS", "REST APIs"],
     area: "Backend",
     status: "Complete",
@@ -46,7 +46,7 @@ This experience taught me that production systems aren't just about elegant code
   },
   {
     slug: "stopwatch-timer-embedded",
-    title: "Precision Stopwatch Timer - Embedded System",
+    title: "Precision Stopwatch Timer",
     blurb: "High-precision embedded stopwatch system with LCD display and button controls, featuring accurate timing to millisecond resolution using interrupt-driven architecture.",
     tags: ["C", "PIC24F", "LCD Display", "Embedded Systems", "Timer Interrupts", "Hardware"],
     area: "Embedded",
@@ -135,9 +135,9 @@ This project combines my passion for martial arts with software engineering, sol
   },
   {
     slug: "web-design-consulting",
-    title: "Web Design & Consulting at Designmen - 3 Client Websites",
-    blurb: "Led end-to-end development of 3 business websites generating $45K+ in client revenue, optimized for SEO with 240% organic traffic increase.",
-    tags: ["React", "JavaScript", "SQL", "SEO", "Database Design"],
+    title: "Web Design - 3 Client Websites",
+    blurb: "My first exposure to web development (starting in high school)... Fully responsible for the creation of 3 Calgary-based business websites generating $45K+ in client revenue.",
+    tags: ["WordPress", "JavaScript", "SQL", "SEO", "Database Design"],
     area: "Full-Stack",
     status: "Complete",
     body: `Over 16 months at Designmen Consulting, I managed the complete lifecycle of 3 business websites, from requirements gathering to deployment to ongoing optimization.
