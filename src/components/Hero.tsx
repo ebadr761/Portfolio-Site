@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Container from './Container';
 import AnimatedElement from './AnimatedElement';
+import TypingTitles from './TypingTitles';
 import { PROFILE } from '@/data/links';
 
 export default function Hero() {
@@ -33,15 +34,8 @@ export default function Hero() {
           </AnimatedElement>
 
           <AnimatedElement delay={1}>
-            <div className="flex flex-wrap gap-3">
-              {PROFILE.titles.map((title, idx) => (
-                <span
-                  key={idx}
-                  className="px-4 py-2 rounded-full glass text-sm font-medium text-text hover:glass-strong hover:scale-105 hover:shadow-soft transition-all duration-300 cursor-default"
-                >
-                  {title}
-                </span>
-              ))}
+            <div className="text-xl md:text-2xl font-medium text-text min-h-[2rem]">
+              <TypingTitles titles={PROFILE.titles} speed={60} pauseBetween={2500} />
             </div>
           </AnimatedElement>
 
