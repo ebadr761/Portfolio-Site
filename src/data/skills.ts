@@ -6,35 +6,27 @@ export interface SkillCategory {
 export const SKILLS: SkillCategory[] = [
   {
     category: "Languages",
-    skills: ["C/C++", "Python", "Java", "JavaScript", "Go", "SQL"],
+    skills: ["C", "C++", "Python", "Java"],
   },
   {
     category: "Frontend",
-    skills: ["React", "HTML/CSS", "Tailwind CSS", "TypeScript", "Responsive Design"],
+    skills: ["React", "HTML/CSS", "Tailwind CSS", "TypeScript"],
   },
   {
     category: "Backend & APIs",
     skills: ["Flask", "REST APIs", "Node.js", "LangChain", "LangGraph"],
   },
   {
-    category: "Databases",
-    skills: ["PostgreSQL", "Redis", "SQL Database Design", "Time-Series Data"],
-  },
-  {
     category: "DevOps & Cloud",
-    skills: ["AWS (EC2, Lambda, S3)", "Docker", "Kubernetes", "CI/CD Pipelines", "Linux/UNIX", "Git"],
+    skills: ["AWS (EC2, Lambda, S3)", "Linux/UNIX", "Git"],
   },
   {
     category: "Embedded Systems",
-    skills: ["PIC24F", "ARM Cortex", "C Firmware", "I2C/SPI/UART", "Power Optimization", "PCB Design Basics"],
+    skills: ["PIC24F", "ARM Cortex", "C Firmware", "I2C/SPI/UART"],
   },
   {
     category: "AI & ML Tools",
-    skills: ["LangChain", "LangGraph", "n8n Workflows", "Multi-Agent Systems"],
-  },
-  {
-    category: "Tools & Practices",
-    skills: ["Git", "Docker", "Testing (pytest, Jest)", "Code Reviews", "Agile Development"],
+    skills: ["LangChain", "LangGraph", "n8n Workflows"],
   },
 ];
 

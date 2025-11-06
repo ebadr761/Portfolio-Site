@@ -1,4 +1,4 @@
-// Ayu Mirage inspired theme - similar to Ojas's portfolio
+// Ayu Mirage inspired theme
 export const colors = {
   // Base colors (Ayu Mirage palette)
   background: '#1f2430',      // Main background

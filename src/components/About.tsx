@@ -1,4 +1,5 @@
 import React from 'react';
+import { GraduationCap, Briefcase, Code2, Award } from 'lucide-react';
 import Container from './Container';
 import AnimatedElement from './AnimatedElement';
 import { SKILLS, CERTIFICATIONS } from '@/data/skills';
@@ -7,34 +8,56 @@ import { PROFILE } from '@/data/links';
 
 export default function About() {
   return (
-    <section id="about" className="py-20 px-6 border-t border-border bg-background">
+    <section id="about" className="relative py-32 px-6 border-t border-border bg-gradient-to-b from-background to-surface/30">
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 right-10 w-80 h-80 bg-accentPurple/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-accentOrange/10 rounded-full blur-3xl"></div>
+      </div>
+
       <Container>
         <AnimatedElement delay={0}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-text">About Me</h2>
+          <div className="mb-20">
+            <div className="flex items-center gap-3 mb-4">
+              <Code2 className="text-accentPurple w-6 h-6" />
+              <span className="text-sm text-accentPurple uppercase tracking-wider font-medium">Background</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-display font-bold mb-6 text-gradient-cool">
+              About Me
+            </h2>
+            <p className="text-lg text-subtext max-w-2xl">
+              A passionate software engineer with expertise in building scalable systems and innovative solutions.
+            </p>
+          </div>
         </AnimatedElement>
 
         {/* Education */}
-        <div className="mb-20">
+        <div className="mb-24">
           <AnimatedElement delay={1}>
-            <h3 className="text-2xl font-bold text-text mb-8">Education</h3>
+            <div className="flex items-center gap-3 mb-10">
+              <GraduationCap className="text-accentBlue w-6 h-6" />
+              <h3 className="text-3xl font-display font-bold text-text">Education</h3>
+            </div>
           </AnimatedElement>
           {EDUCATION.map((edu, idx) => (
             <AnimatedElement key={idx} delay={2 + idx}>
-              <div className="mb-8 pb-8 border-b border-border/50 last:border-b-0">
+              <div className="group relative glass rounded-2xl p-8 mb-6 hover:glass-strong hover:shadow-soft-lg transition-all duration-300">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
                   <div>
-                    <h4 className="text-xl font-bold text-text">{edu.degree} in {edu.field}</h4>
-                    <p className="text-subtext">{edu.school}</p>
+                    <h4 className="text-2xl font-display font-bold text-text group-hover:text-accentBlue transition-colors">
+                      {edu.degree} in {edu.field}
+                    </h4>
+                    <p className="text-lg text-subtext mt-1">{edu.school}</p>
                   </div>
-                  <span className="text-sm text-muted whitespace-nowrap">
+                  <span className="px-4 py-2 rounded-lg bg-accentBlue/10 text-accentBlue text-sm font-medium whitespace-nowrap">
                     {edu.startDate} – {edu.endDate}
                   </span>
                 </div>
-                <ul className="space-y-2 text-subtext">
+                <ul className="space-y-3 text-subtext">
                   {edu.details.map((detail, i) => (
-                    <li key={i} className="text-sm flex gap-3">
-                      <span className="text-accentBlue mt-1">→</span>
-                      {detail}
+                    <li key={i} className="flex gap-3 items-start">
+                      <span className="text-accentBlue mt-1 flex-shrink-0">→</span>
+                      <span>{detail}</span>
                     </li>
                   ))}
                 </ul>
@@ -44,30 +67,33 @@ export default function About() {
         </div>
 
         {/* Experience */}
-        <div className="mb-20">
+        <div className="mb-24">
           <AnimatedElement delay={3}>
-            <h3 className="text-2xl font-bold text-text mb-8">Experience</h3>
+            <div className="flex items-center gap-3 mb-10">
+              <Briefcase className="text-accentOrange w-6 h-6" />
+              <h3 className="text-3xl font-display font-bold text-text">Experience</h3>
+            </div>
           </AnimatedElement>
           {EXPERIENCE.map((exp, idx) => (
             <AnimatedElement key={idx} delay={4 + idx}>
-              <div className="mb-10 pb-10 border-b border-border/50 last:border-b-0">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-3">
+              <div className="group relative glass rounded-2xl p-8 mb-6 hover:glass-strong hover:shadow-soft-lg hover:scale-[1.01] transition-all duration-300">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
                   <div>
-                    <h4 className="text-xl font-bold text-text group-hover:text-accentBlue transition-colors">
+                    <h4 className="text-2xl font-display font-bold text-text group-hover:text-accentOrange transition-colors">
                       {exp.title}
                     </h4>
-                    <p className="text-subtext">
+                    <p className="text-lg text-subtext mt-1">
                       {exp.company} • {exp.location}
                     </p>
                   </div>
-                  <span className="text-sm text-muted whitespace-nowrap">
+                  <span className="px-4 py-2 rounded-lg bg-accentOrange/10 text-accentOrange text-sm font-medium whitespace-nowrap">
                     {exp.startDate} – {exp.endDate}
                   </span>
                 </div>
-                <p className="text-subtext mb-4 leading-relaxed">{exp.description}</p>
-                <ul className="space-y-2 mb-4 text-subtext text-sm">
+                <p className="text-subtext mb-6 leading-relaxed">{exp.description}</p>
+                <ul className="space-y-3 mb-6 text-subtext">
                   {exp.achievements.map((achievement, i) => (
-                    <li key={i} className="flex gap-3">
+                    <li key={i} className="flex gap-3 items-start">
                       <span className="text-accentOrange mt-1 flex-shrink-0">•</span>
                       <span>{achievement}</span>
                     </li>
@@ -77,7 +103,7 @@ export default function About() {
                   {exp.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 rounded text-xs bg-surface text-subtext border border-border/50"
+                      className="px-3 py-1.5 rounded-lg text-xs font-medium bg-surface/50 text-subtext border border-border/30 hover:border-accentOrange/50 hover:text-text transition-all duration-300"
                     >
                       {tech}
                     </span>
@@ -89,22 +115,25 @@ export default function About() {
         </div>
 
         {/* Skills */}
-        <div className="mb-20">
+        <div className="mb-24">
           <AnimatedElement delay={5}>
-            <h3 className="text-2xl font-bold text-text mb-8">Technical Skills</h3>
+            <div className="flex items-center gap-3 mb-10">
+              <Code2 className="text-accentPurple w-6 h-6" />
+              <h3 className="text-3xl font-display font-bold text-text">Technical Skills</h3>
+            </div>
           </AnimatedElement>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {SKILLS.map((skillGroup, idx) => (
               <AnimatedElement key={skillGroup.category} delay={6 + idx}>
-                <div>
-                  <h4 className="text-lg font-semibold text-accentBlue mb-3">
+                <div className="group glass rounded-2xl p-6 hover:glass-strong hover:shadow-soft transition-all duration-300">
+                  <h4 className="text-xl font-display font-semibold text-accentPurple mb-4 group-hover:text-gradient-blue transition-colors">
                     {skillGroup.category}
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {skillGroup.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-1 rounded-full text-sm bg-panel border border-border text-subtext hover:border-accentBlue hover:text-accentBlue transition-colors cursor-default"
+                        className="px-3 py-2 rounded-lg text-sm font-medium bg-surface/50 border border-border/30 text-subtext hover:border-accentPurple/50 hover:text-text hover:scale-105 transition-all duration-300 cursor-default"
                       >
                         {skill}
                       </span>
@@ -120,15 +149,20 @@ export default function About() {
         {CERTIFICATIONS.length > 0 && (
           <AnimatedElement delay={7}>
             <div>
-              <h3 className="text-2xl font-bold text-text mb-6">Certifications</h3>
-              <div className="space-y-3">
+              <div className="flex items-center gap-3 mb-10">
+                <Award className="text-accentGreen w-6 h-6" />
+                <h3 className="text-3xl font-display font-bold text-text">Certifications</h3>
+              </div>
+              <div className="space-y-4">
                 {CERTIFICATIONS.map((cert) => (
                   <div
                     key={cert.title}
-                    className="p-4 rounded-lg border border-border bg-panel flex justify-between items-center"
+                    className="group glass rounded-2xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:glass-strong hover:shadow-soft transition-all duration-300"
                   >
-                    <span className="text-text font-medium">{cert.title}</span>
-                    <span className="text-sm text-muted">
+                    <span className="text-lg font-display font-semibold text-text group-hover:text-accentGreen transition-colors">
+                      {cert.title}
+                    </span>
+                    <span className="px-4 py-2 rounded-lg bg-accentGreen/10 text-accentGreen text-sm font-medium whitespace-nowrap">
                       {cert.status} • {cert.targetDate}
                     </span>
                   </div>

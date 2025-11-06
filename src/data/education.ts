@@ -23,10 +23,10 @@ export const EDUCATION: EducationItem[] = [
     school: "University of Calgary",
     degree: "Bachelor of Science",
     field: "Software Engineering",
-    startDate: "Sep 2021",
+    startDate: "Sep 2023",
     endDate: "Apr 2028",
     details: [
-      "3rd Year (as of Oct 2025)",
+      "Currently enrolled in the UCalgary internship program for May 2026-August 2027 to get industry experience!",
       "Relevant Coursework: Programming in C/C++, OOP in C++ & Java, Full Stack Web Development, Data Structures & Algorithms, Embedded Systems, Networked Systems, Applied Operating Systems (Linux), Software Design",
       "Self-Learning: AWS Solutions Architect certification track (exam scheduled Jan 2026)",
     ],

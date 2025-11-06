@@ -12,16 +12,60 @@
   }
 
   a {
-    @apply transition-colors duration-200;
+    @apply transition-all duration-300;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-6 py-3 bg-accent-blue text-background font-semibold rounded-lg hover:opacity-90 transition-opacity;
+    @apply px-6 py-3 bg-accentBlue text-background font-semibold rounded-lg hover:opacity-90 hover:shadow-glow-blue hover:scale-105 transition-all duration-300;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 border border-border text-text font-semibold rounded-lg hover:border-accent-blue transition-colors;
+    @apply px-6 py-3 border border-border text-text font-semibold rounded-lg hover:border-accentBlue hover:bg-panel transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  /* Gradient Text Effects */
+  .text-gradient-blue {
+    @apply bg-gradient-to-r from-accentBlue to-accentPurple bg-clip-text text-transparent;
+  }
+
+  .text-gradient-warm {
+    @apply bg-gradient-to-r from-accentOrange to-accentPurple bg-clip-text text-transparent;
+  }
+
+  .text-gradient-cool {
+    @apply bg-gradient-to-r from-accentBlue via-accentPurple to-accentPurple bg-clip-text text-transparent;
+  }
+
+  .text-gradient-animate {
+    @apply bg-gradient-to-r from-accentBlue via-accentPurple to-accentOrange bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradient 4s linear infinite;
+  }
+
+  /* Glass Morphism */
+  .glass {
+    @apply bg-panel/40 backdrop-blur-md border border-border/50;
+  }
+
+  .glass-strong {
+    @apply bg-panel/60 backdrop-blur-lg border border-border;
+  }
+
+  /* Hover Lift Effect */
+  .hover-lift {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-soft-lg hover:-translate-y-1;
+  }
+
+  /* Smooth Reveal */
+  .reveal {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+
+  .reveal-active {
+    @apply opacity-100 translate-y-0;
   }
 }

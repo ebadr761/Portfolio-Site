@@ -17,49 +17,12 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    slug: "crypto-trading-dashboard",
-    title: "Real-Time Crypto Trading Dashboard",
-    blurb: "Production web application processing 50K+ price updates per minute with <100ms latency, serving 200+ daily active users tracking $2M+ in portfolio value.",
-    tags: ["React", "Flask", "WebSocket", "Redis", "PostgreSQL", "AWS EC2", "Docker"],
-    area: "Full-Stack",
-    status: "Complete",
-    thumb: "media/crypto-dashboard/thumb.jpg",
-    previewVideo: "media/crypto-dashboard/preview.mp4",
-    links: {
-      demo: "https://trading-dashboard.example.com",
-      code: "https://github.com/ebadr761/crypto-trading-dashboard",
-    },
-    body: `Building a high-frequency trading dashboard was a challenging exercise in real-time systems design. The core challenge: how do you display live price data from multiple exchanges without overwhelming the client or server?
-
-The solution involved a three-tier architecture:
-
-**Frontend (React)**: A responsive dashboard with candlestick charts, order books, and portfolio tracking. I used WebSocket connections to stream price updates directly to the UI, eliminating polling overhead. The component structure was designed for performance—memoized renders and efficient re-rendering only when relevant data changed.
-
-**Backend (Flask)**: A REST API layer that aggregates price data from 3 cryptocurrency exchanges (Binance, Coinbase, Kraken). Each request is cached intelligently—short-lived cache for real-time data, longer-lived cache for historical analysis.
-
-**Data Layer (Redis + PostgreSQL)**: Redis serves hot data—current prices, user portfolios, order books—with sub-millisecond access times. PostgreSQL stores historical trades, user accounts, and persistent state. The Redis caching layer reduced database queries by 85%, which was crucial for maintaining <100ms latency at 50K+ updates per minute.
-
-**Infrastructure (AWS + Docker)**: Deployed on EC2 with Docker containerization for consistency across environments. Nginx acts as a reverse proxy, handling load balancing and SSL termination. Implemented comprehensive health monitoring and automated zero-downtime deployments using blue-green deployment strategies.
-
-Key metrics: 99.7% uptime over 6 months, <100ms latency on p99, 1,000+ concurrent WebSocket connections sustained without degradation.
-
-This project taught me the importance of thinking about systems holistically—frontend performance matters as much as backend optimization when serving real-time data at scale.`,
-    gallery: [
-      "media/crypto-dashboard/1.jpg",
-      "media/crypto-dashboard/2.jpg",
-      "media/crypto-dashboard/3.jpg",
-    ],
-  },
-  {
     slug: "ai-chatbot-weather",
     title: "AI Developer Intern @ Quest - Multi-Agent Chatbot Systems",
-    blurb: "Architected production AI chatbots processing 2,500+ daily queries using LangChain/LangGraph orchestration, reducing deployment bugs from 40% to 5% through CI/CD pipelines.",
+    blurb: "Architected production AI chatbots processing 2,500+ daily queries using LangChain/LangGraph orchestration and n8n automation.",
     tags: ["Python", "Flask", "LangChain", "LangGraph", "n8n", "AWS", "REST APIs"],
     area: "Backend",
     status: "Complete",
-    links: {
-      code: "https://github.com/ebadr761/quest-chatbot",
-    },
     body: `During my internship at Quest, I led the architecture and deployment of two production AI systems that fundamentally changed how the company handled customer queries.
 
 **Weather Chatbot (LangChain/LangGraph)**:
@@ -82,96 +45,92 @@ When I joined, the deployment success rate was 60%. Through CI/CD pipeline imple
 This experience taught me that production systems aren't just about elegant code—they're about reliability, monitoring, and iterative improvement through data.`,
   },
   {
-    slug: "weather-station",
-    title: "Embedded Weather Station - Hardware + Firmware",
-    blurb: "Battery-powered weather station running 6+ months on 2 AA batteries with ±0.3°C accuracy, collecting 25K+ data points for analysis.",
-    tags: ["C", "PIC24F", "I2C/UART", "BME280", "Embedded Systems", "Power Optimization"],
+    slug: "stopwatch-timer-embedded",
+    title: "Precision Stopwatch Timer - Embedded System",
+    blurb: "High-precision embedded stopwatch system with LCD display and button controls, featuring accurate timing to millisecond resolution using interrupt-driven architecture.",
+    tags: ["C", "PIC24F", "LCD Display", "Embedded Systems", "Timer Interrupts", "Hardware"],
     area: "Embedded",
     status: "Complete",
-    thumb: "media/weather-station/thumb.jpg",
+    thumb: "media/stopwatch/thumb.jpg",
     links: {
-      code: "https://github.com/ebadr761/weather-station",
+      demo: "",
+      code: "https://github.com/ebadr761/SNAP-Microcontroller-Projects/tree/main/ENSF460_Project1.X",
     },
-    body: `Building an embedded weather station forced me to think deeply about resource constraints—every milliwatt of power matters when you're running on 2 AA batteries.
+    body: `Building a precision stopwatch required deep understanding of timer peripherals and interrupt-driven programming. The core challenge: maintaining accurate time measurements while handling user inputs without drift or jitter.
 
-**Hardware Design**:
-I selected the PIC24F microcontroller for its low power consumption and integrated sleep modes. The sensor stack includes a BME280 (temperature, humidity, pressure) connected via I2C. The real challenge was designing a circuit that wouldn't drain the battery during idle periods.
+**Hardware Architecture**:
+Built around the PIC24F microcontroller with a 16x2 LCD display for time output. The button interface includes Start/Stop, Reset, and Lap functions. Each button uses hardware debouncing (RC circuit) to prevent false triggers from mechanical bounce.
 
-I implemented aggressive power optimization:
-- Microcontroller sleeps in low-power mode between measurements (~50µA idle current)
-- Sensor measurements happen every 5 minutes via scheduled interrupt
-- Data transmission to a base station occurs every 30 minutes via UART
-- Battery voltage monitoring triggers alerts when voltage drops below safe levels
+**Timer Implementation**:
+The system uses the PIC24F's Timer1 peripheral configured for 1ms interrupts. This provides millisecond-resolution timing without software delay loops that would block other operations. The interrupt service routine (ISR) increments time counters and updates the display buffer.
 
-Result: 6+ months runtime on 2 AA batteries. This required careful component selection and firmware-level power management.
+Key timing features:
+- Millisecond-precision timing (±1ms accuracy)
+- Lap time recording (stores up to 10 lap splits in SRAM)
+- Display auto-scrolling through lap times
+- Timer overflow handling for extended run times (99:59.999 max)
 
-**Firmware (C, Interrupt-Driven)**:
-The firmware uses interrupt-driven architecture rather than polling, which is crucial for low-power operation. A timer interrupt wakes the MCU every 5 minutes to sample the BME280, while the main loop handles data buffering and UART transmission.
+**Interrupt-Driven Design**:
+Rather than polling buttons in a main loop, I used external interrupt pins. This ensures instantaneous response—pressing Start/Stop triggers an interrupt that immediately captures the exact timer value, eliminating response lag.
 
-I implemented a circular buffer in the 2KB EEPROM to store up to 2,000 readings locally. This acts as a backup if network connectivity is lost—data isn't lost, just delayed.
+The ISR structure prioritizes timer updates (highest priority) over button handling (lower priority) to prevent timing drift. This design maintains accuracy even during rapid button presses.
 
-Sensor communication protocol: I2C for the BME280 (reads temperature, humidity, pressure sequentially) and UART for wireless transmission to the base station. I had to handle I2C clock stretching and UART timing carefully to avoid data corruption.
+**Power Efficiency**:
+Implemented sleep mode during idle periods. The MCU only wakes for button presses or timer updates, reducing power consumption by 70% compared to a polling-based design.
 
-Temperature accuracy: ±0.3°C, achieved through sensor calibration and multi-sample averaging.
+**Real-World Testing**:
+Validated timing accuracy against reference atomic clock signals. Over 100+ hour-long tests, maximum drift was <50ms (0.05% error), well within acceptable range for general-purpose timing applications.
 
-**Real-World Deployment**:
-Deployed the station outdoors in Calgary for 4 months. Collected 25K+ data points under real conditions—rain, snow, temperature swings from -20°C to +25°C. The system proved robust; only 2 dropouts in 4 months, both due to UART connectivity issues (fixed with better shielding).
-
-Used this data to train machine learning models for temperature forecasting—a follow-up project analyzing patterns in local microclimates.
-
-This project crystallized why embedded systems matter: they run silently in the background, gathering data that informs decisions. Every design choice—from the MCU selection to the power budget—ripples through the entire system.`,
+This project demonstrated the importance of hardware-software co-design in embedded systems—proper peripheral configuration and interrupt handling are just as critical as algorithm design.`,
     gallery: [
-      "media/weather-station/1.jpg",
-      "media/weather-station/2.jpg",
-      "media/weather-station/3.jpg",
+      "media/stopwatch/1.jpg",
+      "media/stopwatch/2.jpg",
     ],
   },
   {
-    slug: "competitive-programming-platform",
-    title: "Competitive Programming Training Platform - Open Source",
-    blurb: "Secure code execution platform supporting C++, Python, Java with isolated Docker sandboxes. 150+ GitHub stars, 12 contributors, serving University of Calgary.",
-    tags: ["Go", "PostgreSQL", "Docker", "Kubernetes", "React", "Code Sandbox"],
+    slug: "mma-tracker",
+    title: "MMA Athletic Discipline Tracker",
+    blurb: "Full-stack fitness tracking platform for MMA athletes to log training sessions, track progress metrics, and visualize performance trends over time.",
+    tags: ["React", "Node.js", "Express", "MongoDB", "Chart.js", "REST API"],
     area: "Full-Stack",
-    status: "Complete",
-    thumb: "media/code-platform/thumb.jpg",
+    status: "In Progress",
+    thumb: "media/mma-tracker/thumb.jpg",
     links: {
-      code: "https://github.com/ebadr761/competitive-programming-platform",
-      demo: "https://codingclub.example.com",
+      code: "https://github.com/ebadr761/mma-tracker",
+      demo: "",
     },
-    body: `This project started as a solution to a real problem: our university's competitive programming club needed a way for students to practice algorithmic problems with automatic judging and feedback.
+    body: `As a martial arts practitioner, I recognized the need for a specialized training tracker that goes beyond generic fitness apps. This platform is designed specifically for MMA athletes to track striking, grappling, conditioning, and technique sessions.
 
-**Security & Sandboxing**:
-The core challenge was running untrusted code safely. A malicious solution could fork infinite processes, allocate all memory, or access the filesystem. I designed an isolated execution environment using Docker:
-
-Each submission spins up a fresh Docker container with only C++, Python, or Java installed—nothing else. The container has:
-- Memory limits (256MB per submission)
-- CPU time limits (5 seconds wall time, 2 seconds user time)
-- No network access
-- No filesystem access outside /tmp
-- No system call privileges
-
-The Go backend orchestrates these containers, monitoring resource usage and terminating submissions that exceed limits.
+**Feature Set**:
+- **Training Log**: Record sessions with discipline-specific metrics (rounds, techniques practiced, sparring partners)
+- **Progress Tracking**: Visualize improvement over time through charts and graphs
+- **Workout Plans**: Pre-built training templates for different skill levels (beginner, intermediate, advanced)
+- **Performance Analytics**: Track key metrics like training frequency, session duration, and technique proficiency
 
 **Architecture**:
-- **Frontend (React)**: Problem statement, code editor with syntax highlighting, submission history, leaderboards
-- **Backend (Go)**: REST API accepting code submissions, orchestrating Docker containers, storing results
-- **Database (PostgreSQL)**: Problems, submissions, user accounts, leaderboards
-- **Infrastructure (Kubernetes)**: Scaled to handle 500+ submissions per day
+The application uses a modern full-stack architecture:
 
-**Performance**:
-Achieved average execution time of <200ms per submission. This required optimizing the container startup overhead—I implemented container pooling, keeping warm containers ready to execute submissions, reducing cold-start time from 2 seconds to 100ms.
+**Frontend (React)**: Single-page application with responsive design. Built custom components for session logging, data visualization (Chart.js), and calendar views. State management uses React hooks and Context API for sharing user data across components.
 
-**Open Source Success**:
-I open-sourced the platform on GitHub. It gained 150+ stars and 12 community contributors who added features like custom test cases, problem difficulty ratings, and language-specific templates. The project is now used by the University of Calgary's competitive programming club (80+ registered users) and has been forked by other universities.
+**Backend (Node.js/Express)**: REST API handling authentication, session CRUD operations, and analytics aggregation. Implemented JWT-based authentication to secure user data.
 
-**Automated Testing Framework**:
-Built 50+ algorithmic problems with automated test suites. Each problem has a reference solution and comprehensive test cases covering edge cases, large inputs, performance requirements. The platform runs these tests against student submissions, providing immediate feedback.
+**Database (MongoDB)**: NoSQL database storing user profiles, training sessions, and workout templates. Schema design optimized for quick queries—frequently accessed data (recent sessions, progress metrics) is denormalized for performance.
 
-This project taught me the value of open-sourcing code—not only did it help my community, it also improved the codebase through external contributions and feedback.`,
+**Key Technical Challenges**:
+
+*Data Aggregation*: Generating weekly/monthly progress reports required efficient aggregation queries. Implemented MongoDB aggregation pipelines to compute metrics like total training hours, session frequency, and technique breakdowns.
+
+*Real-Time Updates*: Session timers needed to persist even if the user closes the app. Implemented local storage caching and background sync to ensure no data loss.
+
+*Mobile Responsiveness*: Athletes need to log workouts on mobile devices. Designed the UI mobile-first with touch-optimized controls and minimal data entry.
+
+**Current Status**:
+Currently in beta testing with 15 athletes from my local MMA gym. Collecting feedback on feature prioritization—most requested additions are social features (share workouts with training partners) and custom metric tracking (weight cut progress, injury logs).
+
+This project combines my passion for martial arts with software engineering, solving a real problem in my community while building full-stack development skills.`,
     gallery: [
-      "media/code-platform/1.jpg",
-      "media/code-platform/2.jpg",
-      "media/code-platform/3.jpg",
+      "media/mma-tracker/1.jpg",
+      "media/mma-tracker/2.jpg",
     ],
   },
   {
