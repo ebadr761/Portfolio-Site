@@ -1,10 +1,10 @@
 # Portfolio Website
 
-A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. This single-page application showcases projects, skills, experience, and contact information with a focus on clean design, smooth animations, and an excellent user experience.
+This portfolio website was built with React, TypeScript, and Tailwind CSS. The goal was to showcase my projects, skills, experience, and contact information.
 
 ## Overview
 
-This portfolio website serves as a digital resume and project showcase, featuring a custom design system based on the Ayu Mirage color theme. The site emphasizes readability, visual appeal, and smooth interactions through carefully crafted animations and transitions.
+This portfolio website serves as a digital resume and project showcase, featuring a custom design system based on the Ayu Mirage color theme!
 
 **Live Site:** [View Portfolio](https://ebad.tech)
 
@@ -93,7 +93,7 @@ portfolio/
 - **Status Badges** - Visual indicators for Complete, In Progress, and Planned projects
 - **Area Classification** - Tags for Backend, Frontend, Full-Stack, Embedded, AI/ML
 - **Tech Stack Tags** - Technology badges with custom colors
-- **Interactive Links** - Links to live demos and source code repositories
+- **Interactive Links** - Links to live demos (i'll add this soon) and source code repositories
 - **Gallery Support** - Placeholders for screenshots and videos
 - **Hover Effects** - Gradient border animations and scale transforms
 - **Staggered Animations** - Fade-in effects with progressive delays
@@ -354,7 +354,7 @@ This project is open source and available for reference. Feel free to use it as 
 ## Contact
 
 **Ebad ur Rehman**
-- Email: ebadrehman@gmail.com
+- Email: ebadrehman99@gmail.com
 - LinkedIn: [linkedin.com/in/ebad-ur-rehman](https://linkedin.com/in/ebad-ur-rehman)
 - GitHub: [github.com/ebadr761](https://github.com/ebadr761)
 
