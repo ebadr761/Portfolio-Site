@@ -45,7 +45,7 @@ export default function Footer() {
           {/* Copyright */}
           <div className="text-center">
             <p className="text-subtext text-sm mb-2 flex items-center justify-center gap-2">
-              Made with <Heart className="w-4 h-4 text-accentBlue fill-accentBlue animate-pulse" /> by Ebad ur Rehman
+              Vibe coded by Ebad ur Rehman
             </p>
             <p className="text-muted text-xs">
               © {new Date().getFullYear()} • Built with React & Tailwind CSS • Inspired by Ayu Mirage
