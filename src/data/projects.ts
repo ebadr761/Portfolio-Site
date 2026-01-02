@@ -26,6 +26,7 @@ export const PROJECTS: Project[] = [
     thumb: "media/stm32/thumb.jpg",
     links: {
       code: "https://github.com/ebadr761/stm32-kinematics-engine",
+      demo: "https://github.com/ebadr761/stm32-kinematics-engine",
     },
     body: `Building a real-time velocity-based training (VBT) system required precise sensor fusion, deterministic timing, and efficient bare-metal programming on the STM32 Nucleo platform.
 
@@ -63,11 +64,11 @@ This project demonstrated the power of bare-metal embedded programming—proper 
     slug: "commercial-web-platforms",
     title: "Commercial Web Platforms",
     blurb: "Architected and deployed high-performance marketing platforms for international clients. Implemented custom English/Arabic (RTL) localization and achieved 3,000+ monthly active users through SEO and SSG optimizations.",
-    tags: ["Next.js", "TypeScript", "i18n", "Google Analytics"],
+    tags: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Vercel"],
     area: "Full-Stack",
     status: "Complete",
     links: {
-      demo: "https://www.ramlyconsulting.com",
+      demo: "https://seasnow.ae",
     },
     body: `Over 16 months at Designmen Consulting, I architected and deployed high-performance marketing platforms for international clients, with a focus on bilingual support and SEO optimization.
 
@@ -99,6 +100,57 @@ Implemented Google Analytics 4 with custom event tracking to measure user engage
 The platforms collectively generated $45K+ in client revenue since 2023. One client reported that the website redesign directly contributed to 3 new contracts worth $15K each.
 
 This project taught me that modern web development is about performance, accessibility, and measurable business outcomes—not just writing React components.`,
+  },
+  {
+    slug: "fightmetrics",
+    title: "FightMetrics",
+    blurb: "Automated fight performance analysis tool using computer vision to track strike speed and frequency, visualizing athlete output trends over time.",
+    tags: ["Python", "AI Agents", "Computer Vision"],
+    area: "AI/ML",
+    status: "In Progress",
+    thumb: "media/fightmetrics/thumb.jpg",
+    links: {
+      code: "https://github.com/ebadr761/fightmetrics",
+      demo: "https://github.com/ebadr761/fightmetrics",
+    },
+    body: `FightMetrics uses computer vision to automatically analyze combat sports training footage, extracting strike metrics that would otherwise require manual frame-by-frame review.
+
+**Computer Vision Pipeline**:
+The system processes video input through a multi-stage pipeline:
+
+1. **Pose Estimation**: Uses MediaPipe to track 33 body landmarks at 30fps. This provides skeletal tracking for punch trajectory analysis.
+
+2. **Strike Detection**: Custom algorithm detects strikes by analyzing hand velocity and acceleration. When hand speed exceeds threshold (>3 m/s) and decelerates rapidly (impact signature), a strike is registered.
+
+3. **Speed Calculation**: Computes strike speed by tracking hand landmark displacement between frames. Applies smoothing filter to reduce jitter from pose estimation noise.
+
+**AI Agent System**:
+I'm building an AI agent layer using LangChain to:
+- Automatically categorize strike types (jab, cross, hook, uppercut) based on trajectory
+- Identify patterns in strike combinations
+- Generate training recommendations based on performance trends
+
+**Data Visualization**:
+The dashboard displays:
+- Strike frequency over time (strikes/minute)
+- Peak strike speed for each round
+- Heatmap of strike locations (body vs head targeting)
+- Historical trend analysis (comparing sessions over weeks)
+
+**Technical Challenges**:
+
+*Occlusion Handling*: When hands overlap or leave frame, pose estimation fails. I implemented Kalman filtering to predict hand position during occlusion, reducing dropped frames by 60%.
+
+*Real-Time Performance*: Processing 30fps video requires <33ms per frame. I optimized the pipeline using NumPy vectorization and frame skipping for non-critical segments.
+
+**Current Status**:
+Currently in beta testing with 8 fighters from my local MMA gym. The system successfully tracks 85%+ of strikes with <10% false positive rate. Next steps include adding punch power estimation using impact audio analysis.
+
+This project combines my passion for martial arts with machine learning, solving a real problem in athletic performance analysis.`,
+    gallery: [
+      "media/fightmetrics/1.jpg",
+      "media/fightmetrics/2.jpg",
+    ],
   },
   {
     slug: "led-intensity-controller",
@@ -153,53 +205,99 @@ This project demonstrated the importance of robust serial communication protocol
     ],
   },
   {
-    slug: "fightmetrics",
-    title: "FightMetrics",
-    blurb: "Automated fight performance analysis tool using computer vision to track strike speed and frequency, visualizing athlete output trends over time.",
-    tags: ["Python", "AI Agents", "Computer Vision"],
-    area: "AI/ML",
-    status: "In Progress",
-    thumb: "media/fightmetrics/thumb.jpg",
+    slug: "enterprise-flight-architecture",
+    title: "Enterprise Flight Architecture",
+    blurb: "A robust object-oriented reservation system refactored using SOLID principles. Implemented Singleton/Factory patterns to reduce code volume by 40% and designed a normalized 8-table relational schema for complex booking transactions.",
+    tags: ["Java", "SQL", "Design Patterns", "Swing"],
+    area: "Backend",
+    status: "Complete",
     links: {
-      code: "https://github.com/ebadr761/fightmetrics",
+      code: "https://github.com/ebadr761/Flight-Reservation-Application",
     },
-    body: `FightMetrics uses computer vision to automatically analyze combat sports training footage, extracting strike metrics that would otherwise require manual frame-by-frame review.
+    body: `This project demonstrates enterprise-level software architecture through the design and implementation of a flight reservation system with clean object-oriented patterns and a normalized database schema.
 
-**Computer Vision Pipeline**:
-The system processes video input through a multi-stage pipeline:
+**Object-Oriented Design**:
+Initially built with procedural code patterns, I refactored the entire codebase using SOLID principles:
+- Single Responsibility: Separated UI, business logic, and data access into distinct layers
+- Open/Closed: Used abstract base classes for extensible flight types and booking strategies
+- Dependency Inversion: Introduced interfaces for database operations to enable testability
 
-1. **Pose Estimation**: Uses MediaPipe to track 33 body landmarks at 30fps. This provides skeletal tracking for punch trajectory analysis.
+**Design Patterns**:
+Implemented industry-standard patterns to reduce coupling and improve maintainability:
+- **Singleton Pattern**: Database connection manager ensures single connection pool across application
+- **Factory Pattern**: Flight object creation abstracted through FlightFactory, eliminating scattered instantiation logic
+- **Observer Pattern**: Real-time seat availability updates propagated to UI components
 
-2. **Strike Detection**: Custom algorithm detects strikes by analyzing hand velocity and acceleration. When hand speed exceeds threshold (>3 m/s) and decelerates rapidly (impact signature), a strike is registered.
+Through pattern application, reduced total code volume by 40% while adding new features.
 
-3. **Speed Calculation**: Computes strike speed by tracking hand landmark displacement between frames. Applies smoothing filter to reduce jitter from pose estimation noise.
+**Database Architecture**:
+Designed a normalized 8-table relational schema following 3NF:
+- Users, Flights, Bookings, Seats, Payments, Airports, Aircraft, Pricing
+- Implemented foreign key constraints and junction tables for many-to-many relationships
+- Used prepared statements to prevent SQL injection attacks
 
-**AI Agent System**:
-I'm building an AI agent layer using LangChain to:
-- Automatically categorize strike types (jab, cross, hook, uppercut) based on trajectory
-- Identify patterns in strike combinations
-- Generate training recommendations based on performance trends
+**SQL Query Optimization**:
+- Indexed frequently queried columns (flight_id, user_id, booking_date)
+- Used JOIN operations instead of nested queries for multi-table data retrieval
+- Implemented connection pooling to reduce database connection overhead
 
-**Data Visualization**:
-The dashboard displays:
-- Strike frequency over time (strikes/minute)
-- Peak strike speed for each round
-- Heatmap of strike locations (body vs head targeting)
-- Historical trend analysis (comparing sessions over weeks)
+**Swing GUI Implementation**:
+Built a desktop UI using Java Swing with MVC architecture:
+- Model: Database entities and business logic
+- View: Swing panels for search, booking, and payment
+- Controller: Event handlers coordinating between View and Model
 
-**Technical Challenges**:
+**Real-World Application**:
+This architecture is similar to production systems used by airlines and travel agencies. The modular design allows easy feature additions (loyalty programs, multi-leg flights, dynamic pricing) without breaking existing code.
 
-*Occlusion Handling*: When hands overlap or leave frame, pose estimation fails. I implemented Kalman filtering to predict hand position during occlusion, reducing dropped frames by 60%.
+This project taught me that good software architecture isn't about writing more code—it's about writing the right abstractions that make the system easier to maintain and extend.`,
+  },
+  {
+    slug: "pdf-artifact-sanitizer",
+    title: "PDF Artifact Sanitizer",
+    blurb: "A high-efficiency document utility script designed to algorithmically detect and strip specific vector color layers from PDF data streams. Automated the cleaning of hundreds of lecture slides for improved readability.",
+    tags: ["Python", "PyMuPDF", "Automation", "CLI"],
+    area: "Backend",
+    status: "Complete",
+    links: {
+      code: "https://github.com/ebadr761/PDF-Specific-Text-Colour-Remover",
+    },
+    body: `This utility script solves a real problem: lecture PDFs with color-coded annotations that reduce readability when printed or viewed in grayscale. I built a tool to programmatically remove specific color layers from PDF vector streams.
 
-*Real-Time Performance*: Processing 30fps video requires <33ms per frame. I optimized the pipeline using NumPy vectorization and frame skipping for non-critical segments.
+**Problem Statement**:
+University lecture slides often contain instructor annotations in specific colors (red, blue, yellow) that are useful in digital format but problematic for printing. Manually editing hundreds of PDFs in Adobe Acrobat was impractical.
 
-**Current Status**:
-Currently in beta testing with 8 fighters from my local MMA gym. The system successfully tracks 85%+ of strikes with <10% false positive rate. Next steps include adding punch power estimation using impact audio analysis.
+**PDF Structure Analysis**:
+PDFs aren't simple image files—they contain vector graphics defined by drawing commands (moveto, lineto, stroke, fill). Each command includes color information in RGB format.
 
-This project combines my passion for martial arts with machine learning, solving a real problem in athletic performance analysis.`,
-    gallery: [
-      "media/fightmetrics/1.jpg",
-      "media/fightmetrics/2.jpg",
-    ],
+I used PyMuPDF (MuPDF library bindings) to:
+1. Parse PDF page streams into individual drawing commands
+2. Identify commands with target RGB color values
+3. Filter out matching commands from the stream
+4. Reconstruct the page without those elements
+
+**Algorithmic Color Detection**:
+Implemented fuzzy color matching to handle slight RGB variations:
+- Target color: RGB(255, 0, 0) (red)
+- Tolerance threshold: ±10 per channel
+- Matches: RGB(250, 5, 3), RGB(255, 0, 10), etc.
+
+This handles PDFs generated by different software that might use slightly different red values.
+
+**Performance Optimization**:
+- Stream processing instead of loading entire PDF into memory
+- Parallel processing for multi-page documents using Python multiprocessing
+- Processes 100+ page PDFs in <5 seconds
+
+**CLI Interface**:
+Built a command-line interface with argparse:
+- Specify target colors via RGB values or hex codes
+- Batch processing for directories of PDFs
+- Preview mode to verify changes before applying
+
+**Real-World Impact**:
+Cleaned 500+ lecture PDFs across 3 semesters, saving 20+ hours of manual editing. Several classmates adopted the tool for their own notes.
+
+This project demonstrates that understanding file format internals (PDF structure) unlocks powerful automation capabilities that GUI tools don't provide.`,
   },
 ];

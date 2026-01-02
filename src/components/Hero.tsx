@@ -84,7 +84,7 @@ export default function Hero() {
           {/* Scroll Indicator */}
           {bootComplete && (
             <AnimatedElement delay={0.6}>
-              <div className="pt-12 flex flex-col items-center gap-2 opacity-40">
+              <div className="pt-8 pb-8 flex flex-col items-center gap-2 opacity-40">
                 <span className="text-xs text-muted font-mono uppercase tracking-wider">SCROLL_DOWN</span>
                 <div className="w-5 h-8 border border-border rounded-sm flex items-start justify-center p-1">
                   <div className="w-1 h-2 bg-accentBlue rounded-full animate-bounce"></div>
