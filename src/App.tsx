@@ -8,7 +8,7 @@ import ScrollProgress from './components/ScrollProgress';
 
 function App() {
   return (
-    <div className="bg-background text-text min-h-screen">
+    <div className="min-h-screen">
       <ScrollProgress />
       <NavBar />
       <Hero />

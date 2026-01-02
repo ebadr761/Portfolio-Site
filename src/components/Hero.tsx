@@ -1,76 +1,97 @@
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Terminal } from 'lucide-react';
+import { useState } from 'react';
 import Container from './Container';
 import AnimatedElement from './AnimatedElement';
-import TypingTitles from './TypingTitles';
+import BootSequence from './BootSequence';
 import { PROFILE } from '@/data/links';
 
 export default function Hero() {
+  const [bootComplete, setBootComplete] = useState(false);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
-      {/* Animated Background Elements */}
+      {/* Subtle Grid Overlay */}
       <div className="absolute inset-0 bg-background">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-accentBlue/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accentPurple/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accentOrange/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-accentBlue/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accentPurple/5 rounded-full blur-3xl"></div>
+        </div>
       </div>
 
       {/* Content */}
       <Container>
         <div className="relative z-10 max-w-4xl w-full space-y-8">
+          {/* Terminal Header */}
           <AnimatedElement delay={0}>
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <Sparkles className="text-accentBlue w-5 h-5 animate-pulse" />
-                <p className="text-accentBlue text-sm font-medium tracking-wider uppercase">
-                  Hey, I'm
-                </p>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-surface border border-border rounded-md">
+                <Terminal className="w-4 h-4 text-accentGreen" />
+                <span className="text-xs font-mono text-muted">system.boot</span>
               </div>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-gradient-animate leading-tight">
-                {PROFILE.name}
-              </h1>
-              <div className="h-1 w-32 bg-gradient-to-r from-accentBlue via-accentPurple to-accentOrange rounded-full"></div>
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                <div className="w-3 h-3 rounded-full bg-accentGreen/50"></div>
+              </div>
             </div>
           </AnimatedElement>
 
-          <AnimatedElement delay={1}>
-            <div className="text-xl md:text-2xl font-medium text-text min-h-[2rem]">
-              <TypingTitles titles={PROFILE.titles} speed={60} pauseBetween={2500} />
+          {/* Boot Sequence */}
+          <AnimatedElement delay={0.5}>
+            <div className="bg-surface/50 border border-border rounded-lg p-6 backdrop-blur-sm">
+              <BootSequence onComplete={() => setBootComplete(true)} />
             </div>
           </AnimatedElement>
 
-          <AnimatedElement delay={2}>
-            <p className="text-xl md:text-2xl text-subtext leading-relaxed max-w-3xl font-light">
-              {PROFILE.tagline}
-            </p>
-          </AnimatedElement>
+          {/* Action Buttons - Show after boot */}
+          {bootComplete && (
+            <AnimatedElement delay={0}>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <a
+                  href="#contact"
+                  className="group px-6 py-3 bg-accentBlue text-background font-mono text-sm font-semibold rounded-md hover:shadow-glow-blue hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                >
+                  ESTABLISH_CONNECTION()
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a
+                  href="#work"
+                  className="px-6 py-3 border border-border text-text font-mono text-sm font-semibold rounded-md hover:border-accentBlue hover:bg-surface transition-all duration-300 flex items-center gap-2"
+                >
+                  VIEW_PROJECTS()
+                </a>
+              </div>
+            </AnimatedElement>
+          )}
 
-          <AnimatedElement delay={3}>
-            <div className="flex flex-wrap gap-4 pt-8">
-              <a
-                href="#contact"
-                className="group px-8 py-4 bg-gradient-to-r from-accentBlue to-accentPurple text-background font-semibold rounded-xl hover:shadow-glow-blue hover:scale-105 transition-all duration-300 flex items-center gap-2"
-              >
-                Get in touch
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a
-                href="#work"
-                className="px-8 py-4 glass-strong font-semibold rounded-xl hover:bg-panel hover:scale-105 transition-all duration-300 flex items-center gap-2"
-              >
-                View my work
-              </a>
-            </div>
-          </AnimatedElement>
+          {/* Metadata Tags */}
+          {bootComplete && (
+            <AnimatedElement delay={0.3}>
+              <div className="flex flex-wrap gap-2 pt-4">
+                <span className="px-2.5 py-1 bg-surface/80 border border-border rounded text-xs font-mono text-muted">
+                  LOCATION: {PROFILE.location}
+                </span>
+                <span className="px-2.5 py-1 bg-surface/80 border border-accentGreen/30 rounded text-xs font-mono text-accentGreen">
+                  STATUS: AVAILABLE_MAY_2026
+                </span>
+                <span className="px-2.5 py-1 bg-surface/80 border border-border rounded text-xs font-mono text-muted">
+                  DURATION: 4-16_MONTHS
+                </span>
+              </div>
+            </AnimatedElement>
+          )}
 
           {/* Scroll Indicator */}
-          <AnimatedElement delay={4}>
-            <div className="pt-16 flex flex-col items-center gap-2 opacity-60">
-              <span className="text-xs text-muted uppercase tracking-wider">Scroll to explore</span>
-              <div className="w-6 h-10 border-2 border-muted rounded-full flex items-start justify-center p-2">
-                <div className="w-1 h-3 bg-accentBlue rounded-full animate-bounce"></div>
+          {bootComplete && (
+            <AnimatedElement delay={0.6}>
+              <div className="pt-12 flex flex-col items-center gap-2 opacity-40">
+                <span className="text-xs text-muted font-mono uppercase tracking-wider">SCROLL_DOWN</span>
+                <div className="w-5 h-8 border border-border rounded-sm flex items-start justify-center p-1">
+                  <div className="w-1 h-2 bg-accentBlue rounded-full animate-bounce"></div>
+                </div>
               </div>
-            </div>
-          </AnimatedElement>
+            </AnimatedElement>
+          )}
         </div>
       </Container>
     </section>

@@ -38,21 +38,22 @@ export default function NavBar() {
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       scrolled
-        ? 'bg-background/95 backdrop-blur-xl shadow-soft border-b border-border/50'
-        : 'bg-background/70 backdrop-blur-md border-b border-border/20'
+        ? 'bg-background/95 backdrop-blur-xl border-b border-border'
+        : 'bg-background/80 backdrop-blur-md border-b border-border/30'
     }`}>
       <Container>
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <a
             href="#"
-            className="group text-2xl font-display font-bold text-gradient-blue hover:scale-110 transition-transform duration-300"
+            className="group flex items-center gap-2 text-lg font-mono font-bold text-text hover:text-accentBlue transition-all duration-300"
           >
-            Ebad
+            <span className="w-2 h-2 bg-accentGreen rounded-full animate-pulse"></span>
+            EBAD.SYS
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             {navWithAccents.map((n) => {
               const colors = buttonColors[n.colorIndex];
               const isHighlighted = n.isHovered;
@@ -62,15 +63,15 @@ export default function NavBar() {
                   href={n.href}
                   onMouseEnter={() => setHoveredItem(n.href)}
                   onMouseLeave={() => setHoveredItem(null)}
-                  className="relative text-sm font-semibold transition-all duration-300 hover:scale-110"
+                  className="relative text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-300"
                   style={{
-                    color: isHighlighted ? colors.text : '#9da5b4',
+                    color: isHighlighted ? colors.text : '#71717a',
                   }}
                 >
-                  {n.label}
+                  [{n.label}]
                   {isHighlighted && (
                     <span
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full"
+                      className="absolute -bottom-1 left-0 right-0 h-[2px]"
                       style={{ backgroundColor: colors.text }}
                     ></span>
                   )}
@@ -80,33 +81,33 @@ export default function NavBar() {
           </nav>
 
           {/* Right: Resume + Social links */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-4 py-2 rounded-lg glass text-sm font-medium text-subtext hover:text-accentPurple hover:glass-strong hover:scale-105 transition-all duration-300"
+              className="group flex items-center gap-2 px-3 py-1.5 rounded border border-border bg-surface/50 text-xs font-mono font-medium text-muted hover:text-accentBlue hover:border-accentBlue/50 transition-all duration-300"
             >
-              <FileText className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-              Resume
+              <FileText className="w-3.5 h-3.5" />
+              RESUME
             </a>
             <a
               href="https://github.com/ebadr761"
               target="_blank"
               rel="noreferrer"
-              className="p-2 rounded-lg glass text-subtext hover:text-accentBlue hover:glass-strong hover:scale-110 transition-all duration-300"
+              className="p-2 rounded border border-border bg-surface/50 text-muted hover:text-accentBlue hover:border-accentBlue/50 transition-all duration-300"
               aria-label="GitHub"
             >
-              <Github className="w-5 h-5" />
+              <Github className="w-4 h-4" />
             </a>
             <a
               href="https://linkedin.com/in/rehmane"
               target="_blank"
               rel="noreferrer"
-              className="p-2 rounded-lg glass text-subtext hover:text-accentOrange hover:glass-strong hover:scale-110 transition-all duration-300"
+              className="p-2 rounded border border-border bg-surface/50 text-muted hover:text-accentOrange hover:border-accentOrange/50 transition-all duration-300"
               aria-label="LinkedIn"
             >
-              <Linkedin className="w-5 h-5" />
+              <Linkedin className="w-4 h-4" />
             </a>
           </div>
 

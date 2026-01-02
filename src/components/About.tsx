@@ -6,55 +6,51 @@ import { EDUCATION, EXPERIENCE } from '@/data/education';
 
 export default function About() {
   return (
-    <section id="about" className="relative py-32 px-6 border-t border-border bg-gradient-to-b from-background to-surface/30">
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 right-10 w-80 h-80 bg-accentPurple/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-accentOrange/10 rounded-full blur-3xl"></div>
-      </div>
-
+    <section id="about" className="relative py-32 px-6 border-t border-border bg-background">
       <Container>
         <AnimatedElement delay={0}>
-          <div className="mb-20">
+          <div className="mb-16">
             <div className="flex items-center gap-3 mb-4">
-              <Code2 className="text-accentPurple w-6 h-6" />
-              <span className="text-sm text-accentPurple uppercase tracking-wider font-medium">Background</span>
+              <div className="flex items-center gap-2 px-2.5 py-1 bg-surface border border-border rounded">
+                <Code2 className="text-accentPurple w-4 h-4" />
+                <span className="text-xs text-accentPurple font-mono uppercase tracking-wider">BACKGROUND</span>
+              </div>
             </div>
-            <h2 className="text-5xl md:text-6xl font-display font-bold mb-6 text-gradient-cool">
-              About Me
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 text-text">
+              Technical Profile
             </h2>
-            <p className="text-lg text-subtext max-w-2xl">
-              A passionate software engineer with expertise in building scalable systems and innovative solutions.
+            <p className="text-base text-subtext max-w-2xl font-mono">
+              // Systems engineer specializing in embedded systems and full-stack development
             </p>
           </div>
         </AnimatedElement>
 
         {/* Education */}
-        <div className="mb-24">
-          <AnimatedElement delay={1}>
-            <div className="flex items-center gap-3 mb-10">
-              <GraduationCap className="text-accentBlue w-6 h-6" />
-              <h3 className="text-3xl font-display font-bold text-text">Education</h3>
+        <div className="mb-20">
+          <AnimatedElement delay={0.1}>
+            <div className="flex items-center gap-2 mb-6">
+              <GraduationCap className="text-accentBlue w-5 h-5" />
+              <h3 className="text-2xl font-display font-bold text-text">EDUCATION</h3>
             </div>
           </AnimatedElement>
           {EDUCATION.map((edu, idx) => (
-            <AnimatedElement key={idx} delay={2 + idx}>
-              <div className="group relative glass rounded-2xl p-8 mb-6 hover:glass-strong hover:shadow-soft-lg transition-all duration-300">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-                  <div>
-                    <h4 className="text-2xl font-display font-bold text-text group-hover:text-accentBlue transition-colors">
+            <AnimatedElement key={idx} delay={0.2 + idx * 0.1}>
+              <div className="group relative border border-border bg-surface/50 rounded-lg p-6 mb-4 hover:border-accentBlue/50 transition-all duration-300">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 mb-3">
+                  <div className="flex-1">
+                    <h4 className="text-lg font-display font-bold text-text mb-1">
                       {edu.degree} in {edu.field}
                     </h4>
-                    <p className="text-lg text-subtext mt-1">{edu.school}</p>
+                    <p className="text-sm text-subtext font-mono">{edu.school}</p>
                   </div>
-                  <span className="px-4 py-2 rounded-lg bg-accentBlue/10 text-accentBlue text-sm font-medium whitespace-nowrap">
+                  <span className="px-2.5 py-1 rounded bg-background border border-border text-xs font-mono text-accentBlue whitespace-nowrap">
                     {edu.startDate} – {edu.endDate}
                   </span>
                 </div>
-                <ul className="space-y-3 text-subtext">
+                <ul className="space-y-2 text-sm text-subtext">
                   {edu.details.map((detail, i) => (
-                    <li key={i} className="flex gap-3 items-start">
-                      <span className="text-accentBlue mt-1 flex-shrink-0">→</span>
+                    <li key={i} className="flex gap-2 items-start">
+                      <span className="text-accentBlue mt-0.5 flex-shrink-0">▸</span>
                       <span>{detail}</span>
                     </li>
                   ))}
@@ -65,34 +61,34 @@ export default function About() {
         </div>
 
         {/* Experience */}
-        <div className="mb-24">
-          <AnimatedElement delay={3}>
-            <div className="flex items-center gap-3 mb-10">
-              <Briefcase className="text-accentOrange w-6 h-6" />
-              <h3 className="text-3xl font-display font-bold text-text">Experience</h3>
+        <div className="mb-20">
+          <AnimatedElement delay={0.3}>
+            <div className="flex items-center gap-2 mb-6">
+              <Briefcase className="text-accentOrange w-5 h-5" />
+              <h3 className="text-2xl font-display font-bold text-text">EXPERIENCE</h3>
             </div>
           </AnimatedElement>
           {EXPERIENCE.map((exp, idx) => (
-            <AnimatedElement key={idx} delay={4 + idx}>
-              <div className="group relative glass rounded-2xl p-8 mb-6 hover:glass-strong hover:shadow-soft-lg hover:scale-[1.01] transition-all duration-300">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-                  <div>
-                    <h4 className="text-2xl font-display font-bold text-text group-hover:text-accentOrange transition-colors">
+            <AnimatedElement key={idx} delay={0.4 + idx * 0.1}>
+              <div className="group relative border border-border bg-surface/50 rounded-lg p-6 mb-4 hover:border-accentOrange/50 transition-all duration-300">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 mb-3">
+                  <div className="flex-1">
+                    <h4 className="text-lg font-display font-bold text-text mb-1">
                       {exp.title}
                     </h4>
-                    <p className="text-lg text-subtext mt-1">
+                    <p className="text-sm text-subtext font-mono">
                       {exp.company} • {exp.location}
                     </p>
                   </div>
-                  <span className="px-4 py-2 rounded-lg bg-accentOrange/10 text-accentOrange text-sm font-medium whitespace-nowrap">
+                  <span className="px-2.5 py-1 rounded bg-background border border-border text-xs font-mono text-accentOrange whitespace-nowrap">
                     {exp.startDate} – {exp.endDate}
                   </span>
                 </div>
-                <p className="text-subtext mb-6 leading-relaxed">{exp.description}</p>
-                <ul className="space-y-3 mb-6 text-subtext">
+                <p className="text-sm text-subtext mb-4 leading-relaxed">{exp.description}</p>
+                <ul className="space-y-2 mb-4 text-sm text-subtext">
                   {exp.achievements.map((achievement, i) => (
-                    <li key={i} className="flex gap-3 items-start">
-                      <span className="text-accentOrange mt-1 flex-shrink-0">•</span>
+                    <li key={i} className="flex gap-2 items-start">
+                      <span className="text-accentOrange mt-0.5 flex-shrink-0">▸</span>
                       <span>{achievement}</span>
                     </li>
                   ))}
@@ -101,7 +97,7 @@ export default function About() {
                   {exp.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1.5 rounded-lg text-xs font-medium bg-surface/50 text-subtext border border-border/30 hover:border-accentOrange/50 hover:text-text transition-all duration-300"
+                      className="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-background/50 text-muted border border-border/50 hover:border-accentOrange/50 hover:text-accentOrange transition-all duration-200"
                     >
                       {tech}
                     </span>
@@ -113,25 +109,25 @@ export default function About() {
         </div>
 
         {/* Skills */}
-        <div className="mb-24">
-          <AnimatedElement delay={5}>
-            <div className="flex items-center gap-3 mb-10">
-              <Code2 className="text-accentPurple w-6 h-6" />
-              <h3 className="text-3xl font-display font-bold text-text">Technical Skills</h3>
+        <div className="mb-20">
+          <AnimatedElement delay={0.5}>
+            <div className="flex items-center gap-2 mb-6">
+              <Code2 className="text-accentPurple w-5 h-5" />
+              <h3 className="text-2xl font-display font-bold text-text">TECHNICAL_STACK</h3>
             </div>
           </AnimatedElement>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-4">
             {SKILLS.map((skillGroup, idx) => (
-              <AnimatedElement key={skillGroup.category} delay={6 + idx}>
-                <div className="group glass rounded-2xl p-6 hover:glass-strong hover:shadow-soft transition-all duration-300">
-                  <h4 className="text-xl font-display font-semibold text-accentPurple mb-4 group-hover:text-gradient-blue transition-colors">
+              <AnimatedElement key={skillGroup.category} delay={0.6 + idx * 0.1}>
+                <div className="group border border-border bg-surface/50 rounded-lg p-4 hover:border-accentPurple/50 transition-all duration-300">
+                  <h4 className="text-sm font-mono font-semibold text-accentPurple mb-3 uppercase tracking-wide">
                     {skillGroup.category}
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {skillGroup.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-2 rounded-lg text-sm font-medium bg-surface/50 border border-border/30 text-subtext hover:border-accentPurple/50 hover:text-text hover:scale-105 transition-all duration-300 cursor-default"
+                        className="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-background/50 text-muted border border-border/50 hover:border-accentPurple/50 hover:text-accentPurple transition-all duration-200 cursor-default"
                       >
                         {skill}
                       </span>
@@ -145,22 +141,22 @@ export default function About() {
 
         {/* Certifications */}
         {CERTIFICATIONS.length > 0 && (
-          <AnimatedElement delay={7}>
+          <AnimatedElement delay={0.8}>
             <div>
-              <div className="flex items-center gap-3 mb-10">
-                <Award className="text-accentGreen w-6 h-6" />
-                <h3 className="text-3xl font-display font-bold text-text">Certifications</h3>
+              <div className="flex items-center gap-2 mb-6">
+                <Award className="text-accentGreen w-5 h-5" />
+                <h3 className="text-2xl font-display font-bold text-text">CERTIFICATIONS</h3>
               </div>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {CERTIFICATIONS.map((cert) => (
                   <div
                     key={cert.title}
-                    className="group glass rounded-2xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:glass-strong hover:shadow-soft transition-all duration-300"
+                    className="group border border-border bg-surface/50 rounded-lg p-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 hover:border-accentGreen/50 transition-all duration-300"
                   >
-                    <span className="text-lg font-display font-semibold text-text group-hover:text-accentGreen transition-colors">
+                    <span className="text-sm font-mono font-semibold text-text">
                       {cert.title}
                     </span>
-                    <span className="px-4 py-2 rounded-lg bg-accentGreen/10 text-accentGreen text-sm font-medium whitespace-nowrap">
+                    <span className="px-2.5 py-1 rounded bg-background border border-border text-xs font-mono text-accentGreen whitespace-nowrap">
                       {cert.status} • {cert.targetDate}
                     </span>
                   </div>
