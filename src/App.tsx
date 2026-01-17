@@ -1,22 +1,15 @@
-import NavBar from './components/NavBar';
-import Hero from './components/Hero';
-import Projects from './components/Projects';
-import About from './components/About';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import ScrollProgress from './components/ScrollProgress';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './components/HomePage';
+import TranscriptPage from './components/TranscriptPage';
 
 function App() {
   return (
-    <div className="min-h-screen">
-      <ScrollProgress />
-      <NavBar />
-      <Hero />
-      <Projects />
-      <About />
-      <Contact />
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/transcript" element={<TranscriptPage />} />
+      </Routes>
+    </Router>
   );
 }
 
