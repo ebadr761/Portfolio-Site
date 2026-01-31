@@ -63,14 +63,12 @@ This project demonstrated the power of bare-metal embedded programming—proper 
   {
     slug: "hoplon",
     title: "Hoplon",
-    blurb: "Location-aware operations and messaging platform for construction, logistics, and field services. Building a monorepo architecture with Convex backend, Next.js admin portal, and React Native mobile app for geofence-based worker tracking and real-time alerts.",
-    tags: ["Convex", "Next.js", "React Native", "TypeScript", "Clerk", "Turborepo"],
+    blurb: "I'm working as a backend developer at Hoplon which is a startup platform designed to streamline operations for industries heavily dependent on on-site work like construction, logistics, field services. Building with a Convex backend, Next.js admin portal, and React Native mobile app for geofence-based worker tracking and real-time alerts.",
+    tags: ["Convex", "Next.js", "React Native"],
     area: "Full-Stack",
     status: "In Progress",
-    links: {
-      code: "https://github.com/hoplon-dev-app/hoplon-app",
-    },
-    body: `Hoplon is a startup platform designed to streamline operations for industries heavily dependent on on-site work—construction, logistics, field services. The core problem: companies struggle to track worker locations, coordinate activities across job sites, and respond to on-site events in real-time.
+    links: {},
+    body: `I'm working as a backend developer at Hoplon which is a startup platform designed to streamline operations for industries heavily dependent on on-site work—construction, logistics, field services. The core problem: companies struggle to track worker locations, coordinate activities across job sites, and respond to on-site events in real-time.
 
 **The Core Loop**:
 Admins define geofences (job sites) → Workers enter/exit sites → Events are tracked in real-time → Messages and notifications are triggered automatically. This creates a passive, frictionless tracking system that requires no active worker input.

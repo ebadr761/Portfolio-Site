@@ -131,6 +131,12 @@ function ProjectCard({ project, isFeatured, getStatusColor }: any) {
               CODE
             </a>
           )}
+          {project.links && Object.keys(project.links).length === 0 && project.slug === 'hoplon' && (
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-border/50 text-[11px] font-mono font-medium text-muted bg-background/30 cursor-not-allowed opacity-75">
+              <Github size={14} />
+              PRIVATE CODE
+            </div>
+          )}
           {project.links?.demo && (
             <a
               href={project.links.demo}
