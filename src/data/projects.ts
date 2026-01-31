@@ -61,45 +61,54 @@ This project demonstrated the power of bare-metal embedded programming—proper 
     ],
   },
   {
-    slug: "commercial-web-platforms",
-    title: "Commercial Web Platforms",
-    blurb: "Architected and deployed high-performance marketing platforms for international clients. Implemented custom English/Arabic (RTL) localization and achieved 3,000+ monthly active users through SEO and SSG optimizations.",
-    tags: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Vercel"],
+    slug: "hoplon",
+    title: "Hoplon",
+    blurb: "Location-aware operations and messaging platform for construction, logistics, and field services. Building a monorepo architecture with Convex backend, Next.js admin portal, and React Native mobile app for geofence-based worker tracking and real-time alerts.",
+    tags: ["Convex", "Next.js", "React Native", "TypeScript", "Clerk", "Turborepo"],
     area: "Full-Stack",
-    status: "Complete",
+    status: "In Progress",
     links: {
-      demo: "https://seasnow.ae",
+      code: "https://github.com/hoplon-dev-app/hoplon-app",
     },
-    body: `Over 16 months at Designmen Consulting, I architected and deployed high-performance marketing platforms for international clients, with a focus on bilingual support and SEO optimization.
+    body: `Hoplon is a startup platform designed to streamline operations for industries heavily dependent on on-site work—construction, logistics, field services. The core problem: companies struggle to track worker locations, coordinate activities across job sites, and respond to on-site events in real-time.
 
-**Technical Stack**:
-Built on Next.js 14 with TypeScript for type safety and developer experience. Used Static Site Generation (SSG) for maximum performance—pages pre-render at build time, resulting in near-instant load times.
+**The Core Loop**:
+Admins define geofences (job sites) → Workers enter/exit sites → Events are tracked in real-time → Messages and notifications are triggered automatically. This creates a passive, frictionless tracking system that requires no active worker input.
 
-**Bilingual (English/Arabic) Implementation**:
-The most complex challenge was implementing full Right-to-Left (RTL) support for Arabic. This wasn't just translating text—it required:
-- Bidirectional layout system (Flexbox with dir="rtl")
-- Mirrored UI components (navigation, cards, modals)
-- Font optimization for Arabic typefaces (reduced bundle size by 40% through subset fonts)
-- URL routing strategy (/en/about vs /ar/about)
+**Architecture & Tech Stack**:
+Built as a Turborepo monorepo with pnpm workspaces to maximize code sharing and developer velocity:
 
-I used next-i18next for translation management, with dynamic locale detection based on user browser settings or manual selection.
+- **Backend (Convex)**: I'm architecting the data model, business logic, and multi-tenant enforcement. Convex provides real-time subscriptions out of the box—critical for pushing geofence events and worker status updates without polling.
+- **Admin Portal (Next.js)**: A TypeScript/React dashboard for company admins to define geofences, manage teams, and view real-time activity logs. Authentication powered by Clerk with role-based access control.
+- **Mobile App (React Native)**: Workers run a lightweight app using Transistorsoft for background geolocation. The app runs passively in the background, tracking location without draining battery or requiring manual check-ins.
+- **Auth (Clerk)**: Phone-based authentication for mobile workers, email-based for admins, with organization/membership management built-in.
 
-**SEO & Performance Optimization**:
-Achieved 3,000+ monthly active users through aggressive SEO:
-- Server-side rendering for critical pages (better Google indexing)
-- Structured data (JSON-LD) for rich search results
-- Image optimization (Next.js Image component with WebP format)
-- Core Web Vitals optimization (LCP <2.5s, FID <100ms, CLS <0.1)
+**Backend Architecture (Phase 1)**:
+I'm executing Phase 1 of the Enterprise Plan:
 
-Through on-page optimization and technical SEO, organic traffic accounts for 65% of user acquisition.
+1. **Convex Schema Design**: Multi-tenant data model with tables for companies, users, geofences, and geofenceEvents. Each query enforces strict company-scoped data isolation to prevent cross-tenant data leakage.
 
-**Analytics Integration**:
-Implemented Google Analytics 4 with custom event tracking to measure user engagement. Set up conversion funnels to track user journeys from landing page to contact form submission.
+2. **Authorization Layer**: Integrated Clerk with Convex to verify user identity and organization membership. Every data access is scoped to the user's company—no admin can see another company's workers or sites.
 
-**Business Impact**:
-The platforms collectively generated $45K+ in client revenue since 2023. One client reported that the website redesign directly contributed to 3 new contracts worth $15K each.
+3. **Event Ingestion Pipeline**: Mobile clients push GPS coordinates to Convex at regular intervals. The backend performs geofence calculations (point-in-polygon testing) and triggers events when workers cross geofence boundaries.
 
-This project taught me that modern web development is about performance, accessibility, and measurable business outcomes—not just writing React components.`,
+4. **Real-Time Subscriptions**: Convex subscriptions push location updates and alerts to the admin dashboard in real-time, enabling live tracking without manual refresh.
+
+**Technical Challenges & Solutions**:
+
+*Multi-Tenant Data Isolation*: The biggest risk in a multi-tenant system is data leakage. I'm enforcing authorization at the database query level, not the application level. Every Convex query validates the user's company ID before returning data.
+
+*Real-Time Performance*: With potentially 100+ workers per company all sending GPS updates, the backend must handle high throughput. Convex's indexing on (companyId, timestamp) ensures geofence queries scale efficiently.
+
+*Battery Efficiency (Mobile)*: Tracking background location without draining the battery is critical for worker adoption. Transistorsoft is battle-tested for this, with configurable location update intervals.
+
+**Business Model**:
+Hoplon targets SMBs in construction and logistics—companies with 10-100 field workers. Pricing is per-worker per-month, creating a scalable SaaS model with predictable churn.
+
+**Current Status**:
+Phase 1 is underway: Convex backend initialization, schema definition, and authorization layer implementation. The mobile app is already collecting GPS data; the next milestone is connecting it to the Convex backend.
+
+This project taught me the importance of building with strong security primitives from day one. Multi-tenant systems are a different beast than single-tenant apps—the architecture must assume threats and prevent data leakage by design, not by convention.`,
   },
   {
     slug: "fightmetrics",

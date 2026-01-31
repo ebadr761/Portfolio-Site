@@ -20,7 +20,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
     '> USER: EBAD UR REHMAN',
     '> ROLE: SOFTWARE ENGINEER',
     '> SPECIALIZATION: EMBEDDED SYSTEMS | FULL-STACK',
-    '> STATUS: READY FOR INTERNSHIP',
+    '> STATUS: WORKING ON HOPLON (STARTUP)',
     '> SYSTEM ONLINE',
   ];
 

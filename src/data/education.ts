@@ -35,16 +35,16 @@ export const EDUCATION: EducationItem[] = [
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
-    title: "AI Developer Intern",
+    title: "Software Engineering Intern",
     company: "Quest",
     location: "Remote",
-    startDate: "May 2025",
-    endDate: "Aug 2025",
-    description: "Architected and deployed production AI chatbot systems using LangChain/LangGraph and n8n workflow automation. Improved deployment reliability and handled system design for high-throughput query processing.",
+    startDate: "June 2025",
+    endDate: "August 2025",
+    description: "Engineered multi-agent orchestration layer and event-driven serverless backend, shipping 3 production AI agents to support complex company operations and infrastructure optimization.",
     achievements: [
-      "Built and deployed multi-agent weather chatbot processing 2,500+ queries/day from IoT sensors with <2s response time, using LangChain/LangGraph agent orchestration and n8n workflow automation",
-      "Architected EV advisor chatbot aggregating real-time pricing from 5 charging networks, reducing user research time by 80% and serving 300+ active users within first month of production deployment",
-      "Improved deployment reliability from 60% to 95% by implementing CI/CD pipelines and comprehensive testing framework, participating in 20+ code reviews over 2 months",
+      "Engineered a multi-agent orchestration layer using LangGraph, automating complex ETL pipelines and reducing manual configuration time by >50% on tedious company tasks",
+      "Architected an event-driven serverless backend on AWS (Lambda, S3, DynamoDB) ensuring 100% uptime over 3 months, while cutting infrastructure costs through optimized provisioned concurrency",
+      "Collaborated with an 8-engineer team to ship 3 production AI agents (Weather, EV Config, Search), implementing robust RESTful API integrations and system-wide error handling",
     ],
     technologies: [
       "Python",
@@ -59,16 +59,17 @@ export const EXPERIENCE: ExperienceItem[] = [
     ],
   },
   {
-    title: "Manager & Web Designer",
-    company: "Designmen Consulting",
-    location: "Remote",
-    startDate: "Aug 2023",
-    endDate: "Jan 2025",
-    description: "Led end-to-end development of business websites, managing databases and implementing SEO strategies. Responsible for client relations, project delivery, and optimization.",
+    title: "Contract Software Engineer / Full Stack Developer",
+    company: "Self-Employed",
+    location: "Calgary, AB",
+    startDate: "December 2023",
+    endDate: "Present",
+    description: "Deployed revenue-critical platforms for high-traffic clients with sophisticated architectural implementations including custom localization engines and performance optimization.",
     achievements: [
-      "Led end-to-end development of 3 business websites generating $45K+ in client revenue since 2023, managing SQL databases with 10K+ records and implementing SEO strategies that increased organic traffic by 240%",
-      "Analyzed Google Search Console data to optimize site performance, improved search rankings for 4 keywords to first-page results, with organic traffic now accounting for 60% of user acquisition for top site",
+      "Deployed revenue-critical platforms for high-traffic clients (e.g., OneForAll, RawPowerlifting), sustaining 3,000+ monthly active users and driving multi-year revenue growth",
+      "Engineered a custom Bi-Directional Layout Engine to support dynamic English-Arabic localization (RTL/LTR), solving complex CSS layout collisions for a UAE-based construction firm via optimized Next.js/TypeScript architecture",
+      "Delivered digital infrastructure for local services (e.g., Irricana Daycare), achieving sub-second load times via aggressive caching and Static Site Generation (SSG)",
     ],
-    technologies: ["React", "JavaScript", "SQL", "SEO", "Google Analytics", "Database Design"],
+    technologies: ["Next.js", "TypeScript", "React", "Tailwind CSS", "SQL", "SEO", "Google Analytics", "AWS"],
   },
 ];
